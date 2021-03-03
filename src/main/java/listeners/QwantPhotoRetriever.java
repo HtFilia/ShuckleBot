@@ -1,5 +1,11 @@
-package actions;
+package listeners;
 
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.MessageEmbed;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -10,9 +16,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Random;
 
-public final class QwantPhotoRetriever {
-
-    private QwantPhotoRetriever() {}
+public final class QwantPhotoRetriever extends ListenerAdapter {
 
     private static final String templateURIQwant = "https://api.qwant.com/api/search/images?t=images&uiv=4&count=200&q=";
 
@@ -43,7 +47,24 @@ public final class QwantPhotoRetriever {
     }
 
     private static String correspondingURI(String query) {
-        return templateURIQwant.concat(query.replaceAll(" ", "%20"));
+        return templateURIQwant.concat(query.replaceAll("\\s+", "%20"));
+    }
+
+    @Override
+    public void onMessageReceived(MessageReceivedEvent event) {
+        Message msg = event.getMessage();
+        String toSendURL;
+        MessageChannel channel = event.getChannel();
+        if (msg.getContentRaw().startsWith("pls image")) {
+            String query = msg.getContentRaw().split("\\s+")[2];
+            toSendURL = retrievePhoto(query);
+            MessageEmbed embed = new EmbedBuilder().setImage(toSendURL)
+                    .setTitle("Don't fuckle with Shuckle")
+                    .setFooter("This image was received using Qwant.")
+                    .build();
+            channel.sendMessage(embed)
+                    .queue();
+        }
     }
 
 }
