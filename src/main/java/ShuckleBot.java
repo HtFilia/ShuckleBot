@@ -1,4 +1,5 @@
 import actions.QwantPhotoRetriever;
+import lombok.extern.slf4j.Slf4j;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.entities.Message;
@@ -9,6 +10,7 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 
 import javax.security.auth.login.LoginException;
 
+@Slf4j
 public class ShuckleBot extends ListenerAdapter {
 
     public static void main(String[] args) throws LoginException {

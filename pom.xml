@@ -35,17 +35,11 @@
             <version>1.18.16</version>
             <scope>provided</scope>
         </dependency>
-        <!-- LOGGER IF I MAKE IT WORK SOMEDAY -->
+        <!-- LOGGER -->
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.30</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>2.0.0-alpha1</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
         </dependency>
         <!-- JDA -->
         <dependency>
