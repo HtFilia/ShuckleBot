@@ -14,11 +14,15 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public final class QwantPhotoRetriever extends ListenerAdapter {
 
     private static final String templateURIQwant = "https://api.qwant.com/api/search/images?t=images&uiv=4&count=200&q=";
+
+    private static List<String> approvedURLs = new ArrayList<>();
 
     public static String retrievePhoto(String query) {
         String uriQwant = correspondingURI(query);
@@ -63,7 +67,10 @@ public final class QwantPhotoRetriever extends ListenerAdapter {
                     .setFooter("This image was received using Qwant.")
                     .build();
             channel.sendMessage(embed)
-                    .queue();
+                    .queue(message -> {
+                        message.addReaction("U+1F44C").queue();
+                        message.addReaction("U+274C").queue();
+                    });
         }
     }
 
