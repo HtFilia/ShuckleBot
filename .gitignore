@@ -129,5 +129,9 @@ buildNumber.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
 
+### Database ###
+*.sql
+Dockerfile
+
 # End of https://www.toptal.com/developers/gitignore/api/maven,intellij+all,java
 
