@@ -22,8 +22,6 @@ public final class QwantPhotoRetriever extends ListenerAdapter {
 
     private static final String templateURIQwant = "https://api.qwant.com/api/search/images?t=images&uiv=4&count=200&q=";
 
-    private static List<String> approvedURLs = new ArrayList<>();
-
     public static String retrievePhoto(String query) {
         String uriQwant = correspondingURI(query);
         HttpClient client = HttpClient.newBuilder()
