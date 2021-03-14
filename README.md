@@ -1,1 +1,1 @@
-# ShuckleBot
+# app.ShuckleBot
