@@ -134,7 +134,7 @@ buildNumber.properties
 Dockerfile
 
 ### Private Commands ###
-Ylva
+Ylva*
 
 # End of https://www.toptal.com/developers/gitignore/api/maven,intellij+all,java
 
