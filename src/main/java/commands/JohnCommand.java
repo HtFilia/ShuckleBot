@@ -12,6 +12,6 @@ public final class JohnCommand implements ICommand {
 
     @Override
     public void run(MessageReceivedEvent event, List<String> args) {
-        BotHelper.sendImageEmbeded(event, UNKO_IMAGE_URL);
+        BotHelper.sendImageEmbedded(event, UNKO_IMAGE_URL);
     }
 }
