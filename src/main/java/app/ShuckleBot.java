@@ -1,15 +1,14 @@
-import listeners.John;
-import listeners.QwantPhotoRetriever;
-import listeners.ShuckleDatabaseRetriever;
+package app;
+
+import listeners.CommandListener;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import utils.DatabaseUtil;
+import utils.DatabaseHelper;
 
 import javax.security.auth.login.LoginException;
-import java.sql.SQLException;
 
 public class ShuckleBot {
 
@@ -24,11 +23,10 @@ public class ShuckleBot {
         String token = args[0];
         String username = args[1];
         String password = args[2];
-        DatabaseUtil.setParameters(username, password);
+        DatabaseHelper.setParameters(username, password);
         JDABuilder.createLight(token, GatewayIntent.GUILD_MESSAGES, GatewayIntent.DIRECT_MESSAGES)
-                .setActivity(Activity.playing("Help : pls shuckle help"))
-                .addEventListeners(new ShuckleDatabaseRetriever())
-                .addEventListeners(new John())
+                .setActivity(Activity.playing("Help : !shuckle help"))
+                .addEventListeners(new CommandListener())
                 .build();
     }
 
