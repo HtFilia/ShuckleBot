@@ -133,5 +133,8 @@ buildNumber.properties
 *.sql
 Dockerfile
 
+### Private Commands ###
+Ylva
+
 # End of https://www.toptal.com/developers/gitignore/api/maven,intellij+all,java
 
